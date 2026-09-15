@@ -4,13 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.lab04.ui.theme.Lab04Theme
 
@@ -21,38 +24,35 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Lab04Theme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
-
-                    Surface(
-                        modifier = Modifier.padding(innerPadding)
-                    ) {
-                        Greeting(
-                            name = "Android"
-                        )
-                    }
-                }
+                PantallaPrincipal()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier
-) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun PantallaPrincipal() {
+    Scaffold(
+        modifier = Modifier.fillMaxSize()
+    ) { innerPadding ->
+
+        Surface(
+            modifier = Modifier.padding(innerPadding)
+        ) {
+
+            Image(
+                painter = painterResource(id = R.drawable.img),
+                contentDescription = "Imagen de ejemplo",
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun PantallaPrincipalPreview() {
     Lab04Theme {
-        Greeting("Android")
+        PantallaPrincipal()
     }
 }
